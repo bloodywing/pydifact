@@ -33,6 +33,9 @@ class SerializerTest(unittest.TestCase):
     def test_basic2(self):
         self.assert_segments("RFF+PD+50515", [Segment("RFF", "PD", "50515")])
 
+    def test_with_una_in_segments(self):
+        self.assert_segments("RFF+PD+45761", [Segment("UNA", ":+,?"), Segment("RFF", "PD", "45761")])
+
     def test_escape_character(self):
         self.assert_segments(
             "ERC+10:The message does not make sense??",
