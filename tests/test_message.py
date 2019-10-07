@@ -49,6 +49,11 @@ class MessageTest(unittest.TestCase):
         segment = message.get_segment("36CF")
         self.assertEqual(Segment("36CF", 1), segment)
 
+    def test_serialize(self):
+        message = Message.from_segments([Segment("36CF", "1"), Segment("36CF", "2")])
+        string = str(message)
+        self.assertEqual("36CF+1'36CF+2'", string)
+
     def test_get_segment_doesnt_exist(self):
 
         message = Message()
